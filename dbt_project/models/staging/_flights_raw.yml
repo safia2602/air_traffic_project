@@ -1,0 +1,73 @@
+version: 2
+
+sources:
+  - name: open_sky
+    description: >
+      OpenSky flight state vectors (raw data from Databricks).
+      Contains state vector samples for aircraft tracking.
+      See https://opensky-network.org/apidoc/ and https://opensky-network.org/impala-guide for documentation.
+    database: personal_project
+    schema: air_traffic_data
+    tables:
+      - name: flights_raw
+        description: Raw aircraft state vectors (no transformation)
+        columns:
+          - name: time
+            description: Unix timestamp for which the state vector was valid
+          - name: icao24
+            description: 24-bit ICAO transponder ID of the aircraft
+          - name: callsign
+            description: Aircraft callsign broadcast by the transponder
+          - name: lat
+            description: Last known latitude (decimal WGS84)
+          - name: lon
+            description: Last known longitude (decimal WGS84)
+          - name: velocity
+            description: Speed over ground in meters per second
+          - name: heading
+            description: Track angle of movement (degrees clockwise from north)
+          - name: vertrate
+            description: Vertical speed of the aircraft in meters per second (+up / -down)
+          - name: onground
+            description: Flag indicating if aircraft is on the ground (true/false)
+          - name: alert
+            description: ATC alert flag
+          - name: spi
+            description: Special purpose indicator used in ATC
+          - name: squawk
+            description: ATC transponder code
+          - name: baroaltitude
+            description: Barometric altitude in meters
+          - name: geoaltitude
+            description: Geometric altitude in meters (from GNSS)
+          - name: lastposupdate
+            description: Timestamp of last position update received by OpenSky
+          - name: lastcontact
+            description: Timestamp of last signal received by OpenSky
+
+  - name: aircraft_ref
+    description: >
+      Aircraft reference dataset from OpenSky.
+      Contains information about aircraft registration, manufacturer, model, operator, and category.
+    database: personal_project
+    schema: air_traffic_data
+    tables:
+      - name: aircraft_ref
+        description: Aircraft reference table with additional aircraft info
+        columns:
+          - name: icao24
+            description: 24-bit ICAO transponder ID (key)
+          - name: registration
+            description: Aircraft registration
+          - name: manufacturericao
+            description: ICAO code of manufacturer
+          - name: manufacturername
+            description: Manufacturer name
+          - name: model
+            description: Aircraft model
+          - name: typecode
+            description: Aircraft type code
+          - name: operator
+            description: Airline or owner of the aircraft
+          - name: categoryDescription
+            description: Aircraft category
