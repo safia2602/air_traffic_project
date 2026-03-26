@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_flights
+    description: "Enriched flight data with derived metrics and time features"
+
+    columns:
+      - name: icao24
+        tests:
+          - not_null
+
+      - name: velocity_kmh
+        description: "Speed converted to km/h"
+
+      - name: is_airborne
+        description: "1 if aircraft is in the air, 0 otherwise"
+
+      - name: status
+        description: "Flight status (Air or Ground)"
+
+      - name: hour
+        description: "Hourly timestamp"
+
+      - name: minute
+        description: "Minute-level timestamp"

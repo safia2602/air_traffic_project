@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_flights
+    description: "Cleaned flight data joined with aircraft reference information"
+
+    columns:
+      - name: icao24
+        description: "Unique aircraft identifier"
+        tests:
+          - not_null
+
+      - name: callsign
+        description: "Aircraft callsign"
+
+      - name: time_position
+        description: "Timestamp of the position"
+
+      - name: latitude
+        description: "Aircraft latitude"
+
+      - name: longitude
+        description: "Aircraft longitude"
+
+      - name: velocity
+        description: "Speed in m/s"
+
+      - name: vertical_rate
+        description: "Vertical speed"
+
+      - name: on_ground
+        description: "Indicates if aircraft is on ground"
+
+      - name: baro_altitude
+        description: "Barometric altitude"
+
+      - name: geo_altitude
+        description: "Geometric altitude"
+
+      - name: operator
+        description: "Aircraft operator (airline or owner)"
