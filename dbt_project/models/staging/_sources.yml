@@ -5,7 +5,6 @@ sources:
     description: >
       OpenSky flight state vectors (raw data from Databricks).
       Contains state vector samples for aircraft tracking.
-      See https://opensky-network.org/apidoc/ and https://opensky-network.org/impala-guide for documentation.
     database: personal_project
     schema: air_traffic_data
     tables:
@@ -27,23 +26,23 @@ sources:
           - name: heading
             description: Track angle of movement (degrees clockwise from north)
           - name: vertrate
-            description: Vertical speed of the aircraft in meters per second (+up / -down)
+            description: Vertical speed (m/s)
           - name: onground
-            description: Flag indicating if aircraft is on the ground (true/false)
+            description: Aircraft on ground (true/false)
           - name: alert
             description: ATC alert flag
           - name: spi
-            description: Special purpose indicator used in ATC
+            description: Special purpose indicator
           - name: squawk
-            description: ATC transponder code
+            description: Transponder code
           - name: baroaltitude
-            description: Barometric altitude in meters
+            description: Barometric altitude (meters)
           - name: geoaltitude
-            description: Geometric altitude in meters (from GNSS)
+            description: Geometric altitude (meters)
           - name: lastposupdate
-            description: Timestamp of last position update received by OpenSky
+            description: Last position update timestamp
           - name: lastcontact
-            description: Timestamp of last signal received by OpenSky
+            description: Last signal timestamp
 
   - name: aircraft_ref
     description: >
@@ -56,7 +55,7 @@ sources:
         description: Aircraft reference table with additional aircraft info
         columns:
           - name: icao24
-            description: 24-bit ICAO transponder ID (key)
+            description: 24-bit ICAO transponder ID (primary key)
           - name: registration
             description: Aircraft registration
           - name: manufacturericao

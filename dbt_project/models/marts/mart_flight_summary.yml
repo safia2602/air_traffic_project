@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: mart_flight_summary
+    description: "Hourly aggregated flight KPIs for dashboarding"
+
+    columns:
+      - name: hour
+        description: "Hour timestamp"
+        tests:
+          - not_null
+
+      - name: total_flights
+        description: "Total number of flight records"
+
+      - name: flights_in_air
+        description: "Number of flights currently airborne"
+
+      - name: flights_on_ground
+        description: "Number of flights on ground"
+
+      - name: avg_speed_kmh
+        description: "Average flight speed"
+
+      - name: avg_baro_altitude_m
+        description: "Average barometric altitude"
+
+      - name: avg_geo_altitude_m
+        description: "Average geometric altitude"

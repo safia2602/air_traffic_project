@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: mart_flight_details
+    description: "Detailed minute-level flight data enriched with aircraft information"
+
+    columns:
+      - name: minute
+        description: "Minute-level timestamp"
+        tests:
+          - not_null
+
+      - name: icao24
+        description: "Aircraft identifier"
+
+      - name: callsign
+        description: "Flight callsign"
+
+      - name: avg_velocity_kmh
+        description: "Average speed per minute"
+
+      - name: avg_latitude
+        description: "Average latitude (aggregated)"
+
+      - name: avg_longitude
+        description: "Average longitude (aggregated)"
+
+      - name: operator
+        description: "Aircraft operator"
+
+      - name: categoryDescription
+        description: "Aircraft category"
+
+      - name: flights_in_air
+        description: "Number of airborne states"
+
+      - name: flights_on_ground
+        description: "Number of ground states"
